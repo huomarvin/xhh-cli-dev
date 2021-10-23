@@ -1,0 +1,12 @@
+74 error Error: Command failed with exit code 1: git add -- utils/format-path/package.json commands/init/package.json utils/log/package.json utils/utils/package.json utils/npm/package.json utils/npm/package-lock.json models/package/package.json models/package/package-lock.json core/cli/package.json core/cli/package-lock.json core/exec/package.json lerna.json
+74 error 下列路径根据您的一个 .gitignore 文件而被忽略：
+74 error core/cli/package-lock.json
+74 error models/package/package-lock.json
+74 error utils/npm/package-lock.json
+74 error 提示：如果您确实要添加它们，使用 -f 参数。
+74 error 提示：运行下面的命令来关闭本消息
+74 error 提示："git config advice.addIgnoredFile false"
+74 error     at makeError (/Users/marvin/Documents/Git/xhh-cli/node_modules/execa/lib/error.js:60:11)
+74 error     at handlePromise (/Users/marvin/Documents/Git/xhh-cli/node_modules/execa/index.js:118:26)
+74 error     at processTicksAndRejections (internal/process/task_queues.js:95:5)
+74 error     at async Promise.all (index 0)

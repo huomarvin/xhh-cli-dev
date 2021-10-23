@@ -1,0 +1,30 @@
+{
+  "name": "@xhh-cli-dev/serve",
+  "version": "0.0.5",
+  "description": "create a http server by cli",
+  "author": "xhh <huo.marvin@gmail.com>",
+  "homepage": "https://github.com/huomarvin/xhh-cli-dev#readme",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huomarvin/xhh-cli-dev.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/huomarvin/xhh-cli-dev/issues"
+  }
+}
