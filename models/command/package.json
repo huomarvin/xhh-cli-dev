@@ -1,6 +1,6 @@
 {
   "name": "@xhh-cli-dev/command",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "> TODO: description",
   "author": "xhh <huo.marvin@gmail.com>",
   "homepage": "https://github.com/huomarvin/xhh-cli-dev#readme",
@@ -28,8 +28,8 @@
     "url": "https://github.com/huomarvin/xhh-cli-dev/issues"
   },
   "dependencies": {
+    "@xhh-cli-dev/log": "file:../../utils/log",
     "colors": "^1.4.0",
-    "semver": "^7.3.5",
-    "@xhh-cli-dev/log": "file:../../utils/log"
+    "semver": "^7.3.5"
   }
 }
