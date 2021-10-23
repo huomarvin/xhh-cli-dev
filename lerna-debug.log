@@ -1,4 +1,4 @@
-58 error Error: Command failed with exit code 1: git add -- utils/log/package.json utils/npm/package.json commands/serve/package.json commands/killer/package.json utils/utils/package.json utils/format-path/package.json models/command/package.json models/command/package-lock.json models/package/package.json models/package/package-lock.json commands/init/package.json commands/init/package-lock.json core/exec/package.json core/exec/package-lock.json core/cli/package.json core/cli/package-lock.json lerna.json
+58 error Error: Command failed with exit code 1: git add -- commands/serve/package.json commands/killer/package.json utils/format-path/package.json utils/log/package.json utils/npm/package.json utils/utils/package.json models/command/package.json models/command/package-lock.json models/package/package.json models/package/package-lock.json commands/init/package.json commands/init/package-lock.json core/exec/package.json core/exec/package-lock.json core/cli/package.json core/cli/package-lock.json lerna.json
 58 error 下列路径根据您的一个 .gitignore 文件而被忽略：
 58 error commands/init/package-lock.json
 58 error core/cli/package-lock.json

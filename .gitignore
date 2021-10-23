@@ -3,5 +3,3 @@
 node_modules
 /**/node_modules
 /**/package.json.lerna_backup
-
-package-lock.json
