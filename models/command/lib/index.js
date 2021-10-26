@@ -31,7 +31,7 @@ class Command {
   }
   initArgs() {
     // this._cmd = this._argv[this._argv.length - 1];
-    this._options = this._argv[1];
+    this._options = this._argv[1] || {};
     this._argv = this._argv[0];
   }
   checkNodeVersion() {

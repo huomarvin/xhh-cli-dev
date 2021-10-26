@@ -9,7 +9,7 @@ const Package = require("@xhh-cli-dev/package");
 module.exports = exec;
 
 const SETTINGS = {
-  init: "@imooc-cli/init",
+  init: "@xhh-cli-dev/init",
 };
 const CACHE_DIR = "dependencies";
 

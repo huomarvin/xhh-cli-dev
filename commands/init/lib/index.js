@@ -22,8 +22,8 @@ const {
   validateProjectVersion,
 } = require("@xhh-cli-dev/validate");
 
-const PROJECT = "PROJECT";
-const COMPONENT = "COMPONENT";
+const PROJECT = "project";
+const COMPONENT = "component";
 
 const TEMPLATE_TYPE_NORMAL = "normal";
 const TEMPLATE_TYPE_CUSTOME = "custom";
@@ -84,7 +84,7 @@ class InitCommand extends Commnad {
       }
     );
 
-    const ignore = ["node_module/**", "public/**"];
+    const ignore = ["node_module/**", ...this.tempInfo.ignore];
     // ejs 模板替换
     await this.renderEjs({ ignore });
 
@@ -161,6 +161,7 @@ class InitCommand extends Commnad {
 
   async installCustomTemplate() {
     console.log("安装自定义模板模板");
+    // TODO: 读取对应package.json的顶层目录上入口文件并进行传参安装
   }
 
   async prepare() {
@@ -217,77 +218,97 @@ class InitCommand extends Commnad {
       ],
     });
     log.verbose("type", type);
-    if (type === PROJECT) {
-      let projectInfo = await inquirer.prompt([
-        {
-          type: "input",
-          name: "projectName",
-          message: "请输入项目名称",
-          default: "",
-          validate: function (v) {
-            const done = this.async();
-            setTimeout(function () {
-              if (!validateProjectName(v)) {
-                done("请输入合法的项目名称");
-                return;
-              }
-              done(null, true);
-            });
-          },
-          filter: (v) => v,
-        },
-        {
-          type: "input",
-          name: "projectVersion",
-          message: "请输入项目版本号",
-          default: "1.0.0",
-          validate: function (v) {
-            const done = this.async();
-            setTimeout(function () {
-              if (!validateProjectVersion(v)) {
-                done("请输入合法的项目版本");
-                return;
-              }
-              done(null, true);
-            });
-          },
-          filter: (v) => {
-            const version = validateProjectVersion(v);
-            if (!!version) {
-              return version;
+    const promptList = [
+      {
+        type: "input",
+        name: "projectName",
+        message: "请输入项目名称",
+        default: "",
+        validate: function (v) {
+          const done = this.async();
+          setTimeout(function () {
+            if (!validateProjectName(v)) {
+              done("请输入合法的项目名称");
+              return;
             }
-          },
+            done(null, true);
+          });
         },
-        {
-          type: "list",
-          name: "templateName",
-          message: "请选择项目模板",
-          choices: this.createTemplateList(),
+        filter: (v) => v,
+      },
+      {
+        type: "input",
+        name: "projectVersion",
+        message: "请输入项目版本号",
+        default: "1.0.0",
+        validate: function (v) {
+          const done = this.async();
+          setTimeout(function () {
+            if (!validateProjectVersion(v)) {
+              done("请输入合法的项目版本");
+              return;
+            }
+            done(null, true);
+          });
         },
-      ]);
-
-      if (projectInfo.projectName) {
-        // 驼峰转换成中划线
-        projectInfo.className = require("kebab-case")(
-          projectInfo.projectName
-        ).replace(/^-/, "");
-      }
-
-      if (projectInfo.projectVersion) {
-        projectInfo.version = projectInfo.projectVersion;
-      }
-
-      this.projectInfo = { ...projectInfo, type };
-      log.verbose("projectInfo信息为", this.projectInfo);
-      return this.projectInfo;
+        filter: (v) => {
+          const version = validateProjectVersion(v);
+          if (!!version) {
+            return version;
+          }
+        },
+      },
+      {
+        type: "list",
+        name: "templateName",
+        message: "请选择项目模板",
+        choices: this.createTemplateList().filter(
+          (x) => x.tag && x.tag.includes(type)
+        ),
+      },
+    ];
+    let projectInfo;
+    if (type === PROJECT) {
+      projectInfo = await inquirer.prompt(promptList);
     } else if (type === COMPONENT) {
+      promptList.push({
+        type: "input",
+        name: "description",
+        message: "请输入组件描述信息",
+        default: "",
+        validate: function (v) {
+          const done = this.async();
+          setTimeout(() => {
+            if (!v) {
+              done("请输入组件描述信息");
+              return;
+            }
+            done(null, true);
+          }, 0);
+        },
+      });
+      projectInfo = await inquirer.prompt(promptList);
     }
+    if (projectInfo.projectName) {
+      // 驼峰转换成中划线
+      projectInfo.className = require("kebab-case")(
+        projectInfo.projectName
+      ).replace(/^-/, "");
+    }
+    if (projectInfo.projectVersion) {
+      projectInfo.version = projectInfo.projectVersion;
+    }
+
     // 4. 获取项目的基本信息
+    this.projectInfo = { ...projectInfo, type };
+    log.verbose("projectInfo信息为", this.projectInfo);
+    return this.projectInfo;
   }
   createTemplateList() {
     return this.templates.map((item) => ({
       value: item.npmName,
       name: item.name,
+      tag: item.tag,
     }));
   }
 

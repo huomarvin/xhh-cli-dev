@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "axios": "^0.23.0",
+    "latest-version": "^5.1.0",
     "semver": "^7.3.5",
     "url-join": "^4.0.1"
   }

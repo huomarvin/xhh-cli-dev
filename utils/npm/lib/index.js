@@ -3,6 +3,7 @@
 module.exports = { getLatestVersion, getDefaultRegistry };
 
 const axios = require("axios");
+const latestVersion = require("latest-version");
 const urlJoin = require("url-join");
 const semver = require("semver");
 
@@ -46,6 +47,7 @@ async function getNpmSemverVersion(baseVersion, name) {
 async function getLatestVersion(name) {
   const info = await getNpmInfo(name);
   return info["dist-tags"].latest;
+  // return await latestVersion(name);
 }
 
 function getDefaultRegistry() {
