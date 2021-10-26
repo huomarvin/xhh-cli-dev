@@ -49,6 +49,6 @@ async function getLatestVersion(name) {
 }
 
 function getDefaultRegistry() {
-  //   return "https://registry.npmjs.org";
-  return "https://registry.npm.taobao.org";
+  return "https://registry.npmjs.org";
+  // return "https://registry.npm.taobao.org";
 }

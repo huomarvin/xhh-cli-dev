@@ -1,5 +1,5 @@
 {
-  "name": "@xhh-cli-dev/npm",
+  "name": "@xhh-cli-dev/validate",
   "version": "0.1.0",
   "description": "> TODO: description",
   "author": "xhh <huo.marvin@gmail.com>",
@@ -14,8 +14,7 @@
     "lib"
   ],
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/",
-    "access": "public"
+    "registry": "https://registry.npm.taobao.org/"
   },
   "repository": {
     "type": "git",
@@ -26,10 +25,5 @@
   },
   "bugs": {
     "url": "https://github.com/huomarvin/xhh-cli-dev/issues"
-  },
-  "dependencies": {
-    "axios": "^0.23.0",
-    "semver": "^7.3.5",
-    "url-join": "^4.0.1"
   }
 }
