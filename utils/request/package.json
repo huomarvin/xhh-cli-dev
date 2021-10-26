@@ -1,5 +1,5 @@
 {
-  "name": "@xhh-cli-dev/init",
+  "name": "@xhh-cli-dev/request",
   "version": "0.0.9",
   "description": "> TODO: description",
   "author": "xhh <huo.marvin@gmail.com>",
@@ -14,8 +14,7 @@
     "lib"
   ],
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/",
-    "access": "public"
+    "registry": "https://registry.npm.taobao.org/"
   },
   "repository": {
     "type": "git",
@@ -28,18 +27,6 @@
     "url": "https://github.com/huomarvin/xhh-cli-dev/issues"
   },
   "dependencies": {
-    "@xhh-cli-dev/command": "file:../../models/command",
-    "@xhh-cli-dev/log": "file:../../utils/log",
-    "@xhh-cli-dev/package": "file:../../models/package",
-    "@xhh-cli-dev/request": "file:../../utils/request",
-    "@xhh-cli-dev/utils": "file:../../utils/utils",
-    "@xhh-cli-dev/validate": "file:../../utils/validate",
-    "cross-spawn": "^7.0.3",
-    "ejs": "^3.1.6",
-    "fs-extra": "^10.0.0",
-    "glob": "^7.2.0",
-    "inquirer": "^8.2.0",
-    "kebab-case": "^1.0.1",
-    "user-home": "^3.0.0"
+    "axios": "^0.23.0"
   }
 }

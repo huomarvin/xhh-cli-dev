@@ -4,7 +4,7 @@ const path = require("path");
 const fse = require("fs-extra");
 const pkgDir = require("pkg-dir").sync;
 const npminstall = require("npminstall");
-const pathExists = require("path-exists");
+const pathExists = require("path-exists").sync;
 const log = require("@xhh-cli-dev/log");
 const { isObject } = require("@xhh-cli-dev/utils");
 const { getDefaultRegistry, getLatestVersion } = require("@xhh-cli-dev/npm");
@@ -44,9 +44,9 @@ class Package {
     }
   }
 
-  install(newVersion) {
+  async install(newVersion) {
     this.prepare();
-    return npminstall({
+    return await npminstall({
       root: this.targetPath,
       storeDir: this.storePath,
       registry: getDefaultRegistry(),

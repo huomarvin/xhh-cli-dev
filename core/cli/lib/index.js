@@ -47,10 +47,7 @@ function registerCommand() {
     .version(pkg.version);
 
   // 配置Local的options
-  program
-    .command("init [projectName]")
-    .option("-f, --force", "是否强制初始化")
-    .action(exec);
+  program.command("init").option("-f, --force", "是否强制初始化").action(exec);
 
   // 监听模式 如果是debug模式，要调整log等级
   program.on("option:debug", function () {
