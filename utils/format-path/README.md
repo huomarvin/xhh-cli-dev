@@ -1,11 +1,11 @@
 # `@xhh-cli-dev/format-path`
 
-> TODO: description
+> 跨平台格式化路径
 
 ## Usage
 
 ```
 const formatPath = require('@xhh-cli-dev/format-path');
 
-// TODO: DEMONSTRATE API
+formatPath('')
 ```

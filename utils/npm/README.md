@@ -1,11 +1,12 @@
-# `@xhh-cli-dev/get-npm-info`
+# `@xhh-cli-dev/npm`
 
-> TODO: description
+> 操作 npm 的工具包
 
 ## Usage
 
 ```
-const getNpmInfo = require('@xhh-cli-dev/get-npm-info');
+const {getLatestVersion} = require('@xhh-cli-dev/npm');
 
-// TODO: DEMONSTRATE API
+getLatestVersion('@xhh-cli-dev/npm')
+
 ```

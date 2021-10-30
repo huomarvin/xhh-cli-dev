@@ -1,6 +1,6 @@
 # `@xhh-cli-dev/exec`
 
-> TODO: description
+> 执行 Command 的工具类
 
 ## Usage
 

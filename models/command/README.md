@@ -1,11 +1,14 @@
 # `@xhh-cli-dev/command`
 
-> TODO: description
+> Command 抽象类包
 
 ## Usage
 
 ```
-const command = require('@xhh-cli-dev/command');
+const Command = require('@xhh-cli-dev/command');
 
-// TODO: DEMONSTRATE API
+class InitCommand extends Command {
+    init(){}
+    exec(){}
+}
 ```

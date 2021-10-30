@@ -1,11 +1,15 @@
 # `@xhh-cli-dev/validate`
 
-> TODO: description
+> xhh-cli-dev 通用验证工具包
 
 ## Usage
 
 ```
-const validate = require('@xhh-cli-dev/validate');
+const {validateProjectName, validateProjectVersion} = require('@xhh-cli-dev/validate');
 
-// TODO: DEMONSTRATE API
+// 判断projectName是否合法
+validateProjectName('a-b') // true
+
+// 判断ProjectVersion是否合法
+validateProjectVersion('1.0.0') // true
 ```

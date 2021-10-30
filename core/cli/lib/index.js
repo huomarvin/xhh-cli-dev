@@ -7,12 +7,13 @@ const commander = require("commander");
 const semver = require("semver");
 const colors = require("colors");
 const userHome = require("user-home");
-const pathExists = require("path-exists");
+const pathExists = require("path-exists").sync;
 const log = require("@xhh-cli-dev/log");
 const exec = require("@xhh-cli-dev/exec");
 const serve = require("@xhh-cli-dev/serve");
 const pkg = require("../package.json");
 const constanst = require("./const");
+const fse = require("fs-extra");
 
 const { program } = commander;
 let args, config;
@@ -103,10 +104,14 @@ async function checkGlobalUpdate() {
 // 将环境变量存放到本地文件中，在需要的时候去取
 function checkEnv() {
   const dotenv = require("dotenv");
-  const dotenvPath = path.resolve(userHome, ".env");
+  const dotenvPath = path.resolve(userHome, ".xhhenv");
+  console.log(dotenvPath, pathExists(dotenvPath));
   if (pathExists(dotenvPath)) {
     // 将文件中的信息读取到环境变量中去
     config = dotenv.config({ path: dotenvPath });
+  } else {
+    // 创建预留的配置文件
+    fse.writeFileSync(dotenvPath, "KEY=VALUE");
   }
   createDefaultConfig();
   log.verbose("环境变量", process.env);

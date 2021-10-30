@@ -1,5 +1,5 @@
 const request = require("@xhh-cli-dev/request");
 
 module.exports = function () {
-  return request.get("/project");
+  return request.get("/staging/project");
 };

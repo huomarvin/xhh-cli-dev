@@ -1,11 +1,26 @@
 # `@xhh-cli-dev/package`
 
-> TODO: description
+> Package 包装类
 
 ## Usage
 
 ```
-const package = require('@xhh-cli-dev/package');
+const Package = require('@xhh-cli-dev/package');
 
-// TODO: DEMONSTRATE API
+// 包安装目标路径
+const targetPath = '';
+// 包版本
+const packageVersion = '';
+// 包名
+const packageName = '';
+// 包存储路径
+const storePath = '';
+
+const pkg = new Package({
+    targetPath,
+    packageVersion,
+    packageName,
+    storePath
+});
+
 ```

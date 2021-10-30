@@ -2,7 +2,7 @@
 
 const axios = require("axios");
 
-const baseURL = process.env.XHH_CLI_BASE_URL || "http://localhost:3000";
+const baseURL = process.env.XHH_CLI_BASE_URL || "https://openapi.logrolling.cn";
 
 const instance = axios.create({
   baseURL,
