@@ -1,6 +1,6 @@
 {
   "name": "@xhh-cli-dev/cli",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "xhh cli core project",
   "author": "xhh <huo.marvin@gmail.com>",
   "homepage": "",
@@ -21,12 +21,12 @@
     "access": "public"
   },
   "dependencies": {
+    "@xhh-cli-dev/api": "file:../../utils/api",
     "@xhh-cli-dev/exec": "file:../exec",
     "@xhh-cli-dev/init": "file:../../commands/init",
     "@xhh-cli-dev/log": "file:../../utils/log",
     "@xhh-cli-dev/npm": "file:../../utils/npm",
     "@xhh-cli-dev/serve": "file:../../commands/serve",
-    "@xhh-cli-dev/api": "file:../../utils/api",
     "colors": "^1.4.0",
     "commander": "^8.3.0",
     "dotenv": "^10.0.0",

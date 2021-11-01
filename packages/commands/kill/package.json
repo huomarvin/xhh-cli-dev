@@ -1,6 +1,6 @@
 {
   "name": "@xhh-cli-dev/kill",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "kill process by port",
   "author": "xhh <huo.marvin@gmail.com>",
   "homepage": "https://github.com/huomarvin/xhh-cli-dev#readme",
@@ -28,7 +28,7 @@
     "url": "https://github.com/huomarvin/xhh-cli-dev/issues"
   },
   "dependencies": {
-    "kill-port": "^1.6.1",
-    "@xhh-cli-dev/log": "file:../../utils/log"
+    "@xhh-cli-dev/log": "file:../../utils/log",
+    "kill-port": "^1.6.1"
   }
 }

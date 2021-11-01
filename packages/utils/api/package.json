@@ -1,6 +1,6 @@
 {
   "name": "@xhh-cli-dev/api",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "封装所有外部请求的api函数",
   "author": "xhh <huo.marvin@gmail.com>",
   "homepage": "https://github.com/huomarvin/xhh-cli-dev#readme",
