@@ -1,11 +1,9 @@
 # `core`
 
-> TODO: description
+> `xhh`脚手架的核心模块
 
 ## Usage
 
-```
-const core = require('core');
-
-// TODO: DEMONSTRATE API
+```bash
+xhh --help
 ```

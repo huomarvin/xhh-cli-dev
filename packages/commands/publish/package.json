@@ -1,5 +1,5 @@
 {
-  "name": "@xhh-cli-dev/validate",
+  "name": "@xhh-cli-dev/publish",
   "version": "0.3.0",
   "description": "> TODO: description",
   "author": "xhh <huo.marvin@gmail.com>",
@@ -22,17 +22,15 @@
     "url": "git+https://github.com/huomarvin/xhh-cli-dev.git"
   },
   "scripts": {
-    "test": "jest"
+    "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/huomarvin/xhh-cli-dev/issues"
   },
   "dependencies": {
-    "@commitlint/config-conventional": "^14.1.0",
-    "@commitlint/lint": "^14.1.0",
-    "@commitlint/load": "^14.1.0"
-  },
-  "devDependencies": {
-    "jest": "^27.3.1"
+    "@xhh-cli-dev/command": "file:../../models/command",
+    "@xhh-cli-dev/log": "file:../../utils/log",
+    "@xhh-cli-dev/git": "file:../../models/git",
+    "fs-extra": "^10.0.0"
   }
 }

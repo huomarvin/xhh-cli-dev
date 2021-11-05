@@ -1,14 +1,19 @@
-58 error Error: Command failed with exit code 1: git add -- commands/serve/package.json commands/killer/package.json utils/format-path/package.json utils/log/package.json utils/npm/package.json utils/utils/package.json models/command/package.json models/command/package-lock.json models/package/package.json models/package/package-lock.json commands/init/package.json commands/init/package-lock.json core/exec/package.json core/exec/package-lock.json core/cli/package.json core/cli/package-lock.json lerna.json
-58 error 下列路径根据您的一个 .gitignore 文件而被忽略：
-58 error commands/init/package-lock.json
-58 error core/cli/package-lock.json
-58 error core/exec/package-lock.json
-58 error models/command/package-lock.json
-58 error models/package/package-lock.json
-58 error 提示：如果您确实要添加它们，使用 -f 参数。
-58 error 提示：运行下面的命令来关闭本消息
-58 error 提示："git config advice.addIgnoredFile false"
-58 error     at makeError (/Users/marvin/Documents/Git/xhh-cli/node_modules/execa/lib/error.js:60:11)
-58 error     at handlePromise (/Users/marvin/Documents/Git/xhh-cli/node_modules/execa/index.js:118:26)
-58 error     at processTicksAndRejections (internal/process/task_queues.js:97:5)
-58 error     at async Promise.all (index 0)
+0 silly argv {
+0 silly argv   _: [ 'create' ],
+0 silly argv   lernaVersion: '4.0.0',
+0 silly argv   '$0': 'lerna',
+0 silly argv   name: 'git',
+0 silly argv   loc: 'modles'
+0 silly argv }
+1 notice cli v4.0.0
+2 verbose rootPath /Users/marvin/Documents/Git/xhh/xhh-cli
+3 error Error: canceled
+3 error     at Interface.<anonymous> (/Users/marvin/Documents/Git/xhh/xhh-cli/node_modules/read/lib/read.js:66:13)
+3 error     at Interface.emit (events.js:400:28)
+3 error     at Interface._ttyWrite (readline.js:1001:16)
+3 error     at ReadStream.onkeypress (readline.js:265:10)
+3 error     at ReadStream.emit (events.js:400:28)
+3 error     at emitKeys (internal/readline/utils.js:358:14)
+3 error     at emitKeys.next (<anonymous>)
+3 error     at ReadStream.onData (readline.js:1270:36)
+3 error     at ReadStream.emit (events.js:400:28)

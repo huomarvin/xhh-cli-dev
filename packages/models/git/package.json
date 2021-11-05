@@ -1,5 +1,5 @@
 {
-  "name": "@xhh-cli-dev/validate",
+  "name": "@xhh-cli-dev/git",
   "version": "0.3.0",
   "description": "> TODO: description",
   "author": "xhh <huo.marvin@gmail.com>",
@@ -10,29 +10,33 @@
     "lib": "lib",
     "test": "__tests__"
   },
-  "files": [
-    "lib"
-  ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public"
   },
+  "files": [
+    "lib"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/huomarvin/xhh-cli-dev.git"
   },
   "scripts": {
-    "test": "jest"
+    "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/huomarvin/xhh-cli-dev/issues"
   },
   "dependencies": {
-    "@commitlint/config-conventional": "^14.1.0",
-    "@commitlint/lint": "^14.1.0",
-    "@commitlint/load": "^14.1.0"
-  },
-  "devDependencies": {
-    "jest": "^27.3.1"
+    "@xhh-cli-dev/consts": "file:../consts",
+    "@xhh-cli-dev/log": "file:../../utils/log",
+    "@xhh-cli-dev/utils": "file:../../utils/utils",
+    "@xhh-cli-dev/validate": "file:../../utils/validate",
+    "axios": "^0.24.0",
+    "fs-extra": "^10.0.0",
+    "inquirer": "^8.2.0",
+    "semver": "^7.3.5",
+    "simple-git": "^2.47.0",
+    "terminal-link": "^2.1.1"
   }
 }

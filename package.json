@@ -1,11 +1,7 @@
 {
   "name": "xhh-cli",
   "version": "0.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "xhh 脚手架",
   "keywords": [],
   "author": "Marvin <huo_marvin@163.com>",
   "license": "MIT",

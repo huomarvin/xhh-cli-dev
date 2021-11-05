@@ -18,15 +18,13 @@ class Command {
     }
     this._argv = argv;
     log.verbose("_argv", this._argv);
-    let runner = new Promise((resolve, reject) => {
-      let chain = Promise.resolve();
-      chain.then(this.checkNodeVersion());
-      chain.then(this.initArgs());
-      chain.then(this.init());
-      chain.then(this.exec());
-      chain.catch((err) => {
-        log.verbose("Commnad constructor", err.message);
-      });
+    let chain = Promise.resolve();
+    chain.then(this.checkNodeVersion());
+    chain.then(this.initArgs());
+    chain.then(this.init());
+    chain.then(this.exec());
+    chain.catch((err) => {
+      log.verbose("Commnad constructor", err.message);
     });
   }
   initArgs() {
