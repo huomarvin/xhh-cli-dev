@@ -47,15 +47,16 @@ async function getNpmSemverVersion(baseVersion, name) {
 }
 
 async function getLatestVersion(name) {
-  let res;
-  try {
-    const info = await getNpmInfo(name);
-    res = info ? info["dist-tags"].latest : null;
-  } catch (e) {
-    log.verbose(`${name}可能还没有被发布过`);
-  } finally {
-    return res;
-  }
+  // let res;
+  // try {
+  //   const info = await getNpmInfo(name);
+  //   res = info ? info["dist-tags"].latest : null;
+  // } catch (e) {
+  //   log.verbose(`${name}可能还没有被发布过`);
+  // } finally {
+  //   return res;
+  // }
+  return latestVersion(name);
 }
 
 function getDefaultRegistry() {

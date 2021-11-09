@@ -1,10 +1,10 @@
 {
-  "name": "@xhh-cli-dev/kill",
+  "name": "@xhh-cli-dev/cloudbuild",
   "version": "0.4.1",
-  "description": "kill process by port",
+  "description": "> TODO: description",
   "author": "xhh <huo.marvin@gmail.com>",
   "homepage": "https://github.com/huomarvin/xhh-cli-dev#readme",
-  "license": "ISC",
+  "license": "MIT",
   "main": "lib/index.js",
   "directories": {
     "lib": "lib",
@@ -28,7 +28,7 @@
     "url": "https://github.com/huomarvin/xhh-cli-dev/issues"
   },
   "dependencies": {
-    "@xhh-cli-dev/log": "file:../../utils/log",
-    "kill-port": "^1.6.1"
+    "socket.io-client": "^4.3.2",
+    "ws": "^8.2.3"
   }
 }
