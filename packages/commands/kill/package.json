@@ -1,6 +1,6 @@
 {
   "name": "@xhh-cli-dev/kill",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "kill process by port",
   "author": "xhh <huo.marvin@gmail.com>",
   "homepage": "https://github.com/huomarvin/xhh-cli-dev#readme",
