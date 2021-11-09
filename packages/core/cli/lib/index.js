@@ -23,6 +23,7 @@ async function core() {
   } catch (e) {
     log.error(e.message);
     // program.opts().debug && console.error(e);
+    // console.error(e);
   }
 }
 
@@ -30,7 +31,6 @@ async function prepare() {
   checkPkgVersion();
   checkRoot();
   checkUserHome();
-  // checkInputArgs();
   checkEnv();
   await checkGlobalUpdate();
 }
@@ -43,9 +43,36 @@ async function registerCommand() {
     .option("-d, --debug", "是否开启调试模式", false)
     .option("-l, --local <local>", "是否指定本地调试文件路径", "")
     .version(pkg.version);
+
+  // 监听模式 如果是debug模式，要调整log等级
+  program.on("option:debug", function () {
+    if (program.opts().debug) {
+      process.env.LOG_LEVEL = "verbose";
+    } else {
+      process.env.LOG_LEVEL = "info";
+    }
+    log.level = process.env.LOG_LEVEL;
+  });
+
+  program.on("option:local", function () {
+    process.env.CLI_LOCAL = program.opts().local;
+  });
+
   // 不要放到全局，会提前产生BASEURL影响使用
   const { getCommands } = require("@xhh-cli-dev/api");
-  const commands = (await getCommands()).results;
+  const templateCommands = path.resolve(userHome, ".xhh_command.json");
+  let commands;
+  try {
+    commands = await getCommands();
+    if (!pathExists(templateCommands)) {
+      fse.createFileSync(templateCommands);
+    }
+    fse.writeJSONSync(templateCommands, commands, { spaces: 2 });
+  } catch (err) {
+    // 接口报错后采用降级方案
+    console.warn("降级处理失败", err.message);
+    commands = fse.readJSONSync(templateCommands);
+  }
   const SETTINGS = {};
   commands.forEach((command) => {
     SETTINGS[command.command] = command.packageName;
@@ -61,20 +88,6 @@ async function registerCommand() {
       subCommnad.option(option.flags, option.description, option.defaultValue);
     });
     subCommnad.action(exec(SETTINGS));
-  });
-
-  // 监听模式 如果是debug模式，要调整log等级
-  program.on("option:debug", function () {
-    if (program.opts().debug) {
-      process.env.LOG_LEVEL = "verbose";
-    } else {
-      process.env.LOG_LEVEL = "info";
-    }
-    log.level = process.env.LOG_LEVEL;
-  });
-
-  program.on("option:local", function () {
-    process.env.CLI_LOCAL = program.opts().local;
   });
 
   // 监听未知命令
