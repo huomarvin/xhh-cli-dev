@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@xhh-cli-dev/api": "file:../../utils/api",
+    "@xhh-cli-dev/event": "file:../../utils/event",
     "@xhh-cli-dev/exec": "file:../exec",
     "@xhh-cli-dev/init": "file:../../commands/init",
     "@xhh-cli-dev/log": "file:../../utils/log",

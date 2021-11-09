@@ -13,6 +13,7 @@ const {
   doSpinner,
   asyncGenerator,
 } = require("@xhh-cli-dev/utils");
+const CloudBuild = require("@xhh-cli-dev/cloudbuild");
 const Github = require("./Github");
 const Gitee = require("./Gitee");
 
@@ -38,7 +39,7 @@ const {
 class Git {
   constructor(
     { name, version, dir },
-    { refreshServer, refreshToken, refreshOwner }
+    { refreshServer, refreshToken, refreshOwner, buildCommand }
   ) {
     this.name = name;
     this.version = version;
@@ -53,6 +54,21 @@ class Git {
     this.refreshToken = refreshToken;
     this.refreshOwner = refreshOwner;
     this.branch = null; // 本地开发分支
+    this.buildCommand = buildCommand || "npm run build";
+  }
+
+  async publish() {
+    this.preparePublish();
+    const cloudBuild = new CloudBuild(this.git, {
+      buildCmd: this.buildCommand,
+    });
+  }
+
+  preparePublish() {
+    const buildCmdArray = this.buildCommand.split(" ");
+    if (buildCmdArray[0] !== "npm" && buildCmdArray[0] !== "cnpm") {
+      throw new Error("Build 命令非法，必须要使用npm或cnpm");
+    }
   }
 
   async prepare() {
@@ -261,6 +277,7 @@ class Git {
   }
 
   async checkRemoteMaster() {
+    // Do not show peeled tags or pseudorefs like HEAD in the output.
     return (
       (await this.git.listRemote(["--refs"])).indexOf("refs/heads/master") >= 0
     );
@@ -312,7 +329,6 @@ class Git {
             },
           },
         ]);
-        console.log(answer);
         message = `${answer.commitType}: ${answer.message}`;
       }
       await this.git.commit(message);

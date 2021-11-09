@@ -10,9 +10,11 @@ const userHome = require("user-home");
 const pathExists = require("path-exists").sync;
 const log = require("@xhh-cli-dev/log");
 const exec = require("@xhh-cli-dev/exec");
+const events = require("@xhh-cli-dev/event");
 const pkg = require("../package.json");
 const constanst = require("./const");
 const fse = require("fs-extra");
+const { getCommands } = require("@xhh-cli-dev/api");
 
 const { program } = commander;
 
@@ -21,9 +23,9 @@ async function core() {
     await prepare();
     await registerCommand();
   } catch (e) {
+    console.log(e);
     log.error(e.message);
-    // program.opts().debug && console.error(e);
-    // console.error(e);
+    log.verbose(e);
   }
 }
 
@@ -43,23 +45,17 @@ async function registerCommand() {
     .option("-d, --debug", "是否开启调试模式", false)
     .option("-l, --local <local>", "是否指定本地调试文件路径", "")
     .version(pkg.version);
-
   // 监听模式 如果是debug模式，要调整log等级
   program.on("option:debug", function () {
     if (program.opts().debug) {
-      process.env.LOG_LEVEL = "verbose";
-    } else {
-      process.env.LOG_LEVEL = "info";
+      events.emit("LOG_LEVEL_CHANGE", "verbose");
     }
-    log.level = process.env.LOG_LEVEL;
   });
 
   program.on("option:local", function () {
     process.env.CLI_LOCAL = program.opts().local;
   });
 
-  // 不要放到全局，会提前产生BASEURL影响使用
-  const { getCommands } = require("@xhh-cli-dev/api");
   const templateCommands = path.resolve(userHome, ".xhh_command.json");
   let commands;
   try {
@@ -70,8 +66,12 @@ async function registerCommand() {
     fse.writeJSONSync(templateCommands, commands, { spaces: 2 });
   } catch (err) {
     // 接口报错后采用降级方案
-    console.warn("降级处理失败", err.message);
+    console.warn("采用降级处理", err.message);
     commands = fse.readJSONSync(templateCommands);
+  } finally {
+    if (!commands || !Array.isArray(commands)) {
+      throw new Error("commands配置信息获取失败");
+    }
   }
   const SETTINGS = {};
   commands.forEach((command) => {
@@ -138,6 +138,7 @@ async function checkEnv() {
     fse.writeFileSync(dotenvPath, "KEY=VALUE");
   }
   createDefaultConfig();
+  events.emit("CLI_BASEURL_CHANGE", process.env.XHH_CLI_BASE_URL);
   log.verbose("环境变量", process.env);
 }
 

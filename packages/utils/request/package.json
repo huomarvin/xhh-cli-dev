@@ -28,6 +28,7 @@
     "url": "https://github.com/huomarvin/xhh-cli-dev/issues"
   },
   "dependencies": {
+    "@xhh-cli-dev/event": "file:../event",
     "axios": "^0.23.0"
   }
 }

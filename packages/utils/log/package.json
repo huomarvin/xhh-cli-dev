@@ -28,6 +28,7 @@
     "url": "https://github.com/huomarvin/xhh-cli-dev/issues"
   },
   "dependencies": {
+    "@xhh-cli-dev/event": "file:../event",
     "npmlog": "^5.0.1"
   },
   "gitHead": "25f21930ccd020dfb142e3f66480a4ffc52c5f6b"

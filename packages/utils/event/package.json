@@ -1,5 +1,5 @@
 {
-  "name": "@xhh-cli-dev/git",
+  "name": "@xhh-cli-dev/event",
   "version": "0.4.0",
   "description": "> TODO: description",
   "author": "xhh <huo.marvin@gmail.com>",
@@ -10,13 +10,13 @@
     "lib": "lib",
     "test": "__tests__"
   },
+  "files": [
+    "lib"
+  ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public"
   },
-  "files": [
-    "lib"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/huomarvin/xhh-cli-dev.git"
@@ -26,18 +26,5 @@
   },
   "bugs": {
     "url": "https://github.com/huomarvin/xhh-cli-dev/issues"
-  },
-  "dependencies": {
-    "@xhh-cli-dev/cloudbuild": "file:../cloudbuild",
-    "@xhh-cli-dev/consts": "file:../consts",
-    "@xhh-cli-dev/log": "file:../../utils/log",
-    "@xhh-cli-dev/utils": "file:../../utils/utils",
-    "@xhh-cli-dev/validate": "file:../../utils/validate",
-    "axios": "^0.24.0",
-    "fs-extra": "^10.0.0",
-    "inquirer": "^8.2.0",
-    "semver": "^7.3.5",
-    "simple-git": "^2.47.0",
-    "terminal-link": "^2.1.1"
   }
 }
